@@ -1,0 +1,131 @@
+include HT66F50.inc
+
+ds	.section	'data'
+
+AAA		 DB  ?
+COUNT    DB	 ?
+ONEX1    db 082h
+ONEX2    db 083h
+ONEX3    db 084h
+ONEX4    db 085h
+ONEX5    db 086h
+ONEX6    db 087h
+ONEX7    db 088h
+ONEX8    db 089h
+ONEX9    db 08Ah
+
+TWOX1    db 08Bh
+TWOX2    db 08Ch
+TWOX3    db 08Dh
+TWOX4    db 08Eh
+TWOX5    db 08Fh
+TWOX6    db 090h
+TWOX7    db 091h
+TWOX8    db 092h
+TWOX9    db 093h
+
+THREEX1  db 094h
+THREEX2  db 095h
+THREEX3  db 096h
+THREEX4  db 097h
+THREEX5  db 098h
+THREEX6  db 099h
+THREEX7  db 09Ah
+THREEX8  db 09Bh
+THREEX9  db 09Ch
+
+FOURX1   db 09Dh
+FOURX2   db 09Eh
+FOURX3   db 09Fh
+FOURX4   db 0A0h
+FOURX5   db 0A1h
+FOURX6   db 0A2h
+FOURX7   db 0A3h
+FOURX8   db 0A4h
+FOURX9   db 0A5h
+
+FIVEX1   db 0A6h
+FIVEX2   db 0A7h
+FIVEX3   db 0A8h
+FIVEX4   db 0A9h
+FIVEX5   db 0AAh
+FIVEX6   db 0ABh
+FIVEX7   db 0ACh
+FIVEX8   db 0ADh
+FIVEX9   db 0AEh
+
+SIXX1    db 0AFh
+SIXX2    db 0B0h
+SIXX3    db 0B1h
+SIXX4    db 0B2h
+SIXX5    db 0B3h
+SIXX6    db 0B4h
+SIXX7    db 0B5h
+SIXX8    db 0B6h
+SIXX9    db 0B7h
+
+SEVENX1  db 0B8h
+SEVENX2  db 0B9h
+SEVENX3  db 0BAh
+SEVENX4  db 0BBh
+SEVENX5  db 0BCh
+SEVENX6  db 0BDh
+SEVENX7  db 0BEh
+SEVENX8  db 0BFh
+SEVENX9  db 0C0h
+
+EIGHTX1  db 0C1h
+EIGHTX2  db 0C2h
+EIGHTX3  db 0C3h
+EIGHTX4  db 0C4h
+EIGHTX5  db 0C5h
+EIGHTX6  db 0C6h
+EIGHTX7  db 0C7h
+EIGHTX8  db 0C8h
+EIGHTX9  db 0C9h
+
+NIMEX1   db 0CAh
+NIMEX2   db 0CBh
+NIMEX3   db 0CCh
+NIMEX4   db 0CDh
+NIMEX5   db 0CEh
+NIMEX6   db 0CFh
+NIMEX7   db 0D0h
+NIMEX8   db 0D1h
+NIMEX9   db 0D2h
+
+COUNT1   DB	?		
+
+cs	.section	'code'
+		
+	     ORG	 00H
+
+MAIN:	     
+	     MOV	 A,9
+	     MOV	 COUNT1,A
+	     MOV	 A,82H
+	     MOV	 MP0,A
+	     CLR	 AAA     	 
+	     CALL    HW1_1
+	     CALL    HW1_2
+	     JMP	 $
+
+
+HW1_1    PROC 
+	     INC	 AAA	   
+	     MOV     A,9
+	     MOV	 COUNT,A
+	     MOV	 A,0 
+HW1_1    ENDP
+
+HW1_2    PROC
+	     ADD	 A,AAA
+	     MOV	 IAR0,A	    
+	     INC	 MP0	    
+	     SDZ	 COUNT
+	     JMP	 HW1_2
+	     SDZ	 COUNT1
+	     JMP	 HW1_1
+HW1_2    ENDP
+	
+		
